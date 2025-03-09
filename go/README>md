@@ -1,0 +1,18 @@
+# Usage instructions:
+
+## 1. Build for multiple architectures using Docker buildx:
+
+`docker buildx create --name mybuilder --use`
+
+`docker buildx inspect --bootstrap`
+
+`docker buildx build --platform linux/amd64,linux/arm64 \
+     -t yourname/yourapp:latest \
+     --push .`
+
+## 2. Or build for a single architecture:
+### For AMD64
+`docker build --build-arg TARGETARCH=amd64 -t yourname/yourapp:amd64 .`
+
+### For ARM64
+`docker build --build-arg TARGETARCH=arm64 -t yourname/yourapp:arm64 .`
